@@ -68,3 +68,5 @@ Check nginx syntax
 8. If while accessing the public IP you are still recieving apache 2 check if index.html is still present
 
 If it is still present then we need to remove the it
+
+https://lowendbox.com/blog/how-to-replace-apache-with-nginx-on-ubuntu-18-04/
