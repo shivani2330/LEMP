@@ -1,0 +1,14 @@
+1. python --version
+
+
+Next, create a symbolic link to the Python 3 binary in its place.
+2. sudo ln -s /usr/bin/python3 /usr/bin/python
+
+python --version
+
+It will show the current version
+
+3. sudo apt-get install python3-pip
+
+4. sudo pip3 install pymysql
+
