@@ -1,0 +1,6 @@
+1. sudo nano /var/www/projectLEMP/info.php
+
+2. <?php
+phpinfo();
+
+This is valid PHP code that will return information about your server:
