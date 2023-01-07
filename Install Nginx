@@ -1,0 +1,70 @@
+1. All the steps remain the same . 
+
+2. We just need to uninstall apache if its still there . 
+
+Stop apache2.
+
+ sudo service apache2 stop
+
+$ sudo systemctl disable apache2
+
+Uninstall Apache2 and its dependent packages.
+
+sudo apt-get purge apache2 apache2-utils apache2.2-bin apache2-common
+Use autoremove option to get rid of other dependencies.
+
+ sudo apt-get autoremove
+Check whether there are any configuration files that have not been removed.
+
+whereis apache2
+If you get a response as follows apache2: /etc/apache2 remove the directory and existing configuration files.
+
+sudo rm -rf /etc/apache2  
+
+If still while accessing the public IP we get apache2 page then follow the below page 
+
+$ sudo apt-get remove apache2*
+$ sudo apt-get autoremove
+$ sudo apt-get autoclean
+$ sudo rm -rf /etc/apache2 /var/lib/apache2 /var/lib/apache2
+
+
+3. Install nginx 
+
+First remove and flush the old apt repository cache then update the repository to load latest packages information and perform a full upgrade to upgrade all the installed packages.
+
+
+
+$ sudo apt clean all && sudo apt update && sudo apt dist-upgrade
+
+
+sudo apt-get update
+sudo apt-get install nginx
+sudo systemctl status nginx
+
+4. so we need to add a rule to EC2 configuration to open inbound connection through port 80
+
+5. Sample NGINX Configuration file is located at /etc/nginx/sites-available/example.com.conf
+
+server {
+listen 80;
+server_name example.com www.example.com;
+root /var/www/html;
+
+location / {
+try_files $uri $uri/ =404;
+}
+}
+
+6. sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/example.com.conf
+
+In NGINX server blocks configuration files you will create the symbolic link using soft links between sites-available and sites-enabled directory. 
+Soft links allows you whenever you will make changes to server blocks configuration file located in sites-available directory and it will immediately replicated to sites-enabled directory.
+
+7. sudo nginx -t 
+
+Check nginx syntax
+
+8. If while accessing the public IP you are still recieving apache 2 check if index.html is still present
+
+If it is still present then we need to remove the it
